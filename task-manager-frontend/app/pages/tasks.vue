@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watchEffect } from 'vue'
-import { useTaskStore } from '../stores/task.store'
-import { useAuthStore } from '../stores/auth.store'
+import { useTaskStore } from '../../stores/task.store'
+import { useAuthStore } from '../../stores/auth.store'
 
 definePageMeta({
   middleware: 'auth',
@@ -14,34 +14,32 @@ const newTaskTitle = ref('')
 const filter = ref<'all' | 'completed' | 'pending'>('all')
 const loading = ref(false)
 
-// fetch tasks whenever filter changes
 watchEffect(async () => {
   loading.value = true
   await taskStore.fetchTasks(filter.value)
   loading.value = false
 })
 
-// computed tasks
+
 const tasks = computed(() => taskStore.tasks)
 
-// add task
+
 const addTask = async () => {
   if (!newTaskTitle.value.trim()) return
   await taskStore.addTask(newTaskTitle.value)
   newTaskTitle.value = ''
 }
 
-// toggle task
+
 const toggleTask = async (id: number) => {
   await taskStore.toggleTask(id)
 }
 
-// delete task
+
 const deleteTask = async (id: number) => {
   await taskStore.deleteTask(id)
 }
 
-// logout
 const logout = () => {
   authStore.logout()
   navigateTo('/login')

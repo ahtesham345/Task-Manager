@@ -7,13 +7,13 @@ import { useAuthStore } from '../../stores/auth.store'
 const authStore = useAuthStore()
 const router = useRouter()
 
-// form state
+
 const email = ref('')
 const password = ref('')
 const loading = ref(false)
 const errorMessage = ref('')
 
-// watch authentication state
+
 watch(
   () => authStore.isAuthenticated,
   (isAuth) => {
@@ -24,7 +24,7 @@ watch(
   { immediate: true }
 )
 
-// submit handler
+
 const handleLogin = async () => {
   errorMessage.value = ''
   loading.value = true

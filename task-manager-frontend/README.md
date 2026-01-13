@@ -1,75 +1,70 @@
-# Nuxt Minimal Starter
+Task Manager
+Candidate Info
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Name: Ahtesham Shakeel
+Phone / WhatsApp: +923425477337
+Backend: Laravel
+GitHub: https://github.com/ahtesham345/Task-Manager
+Time Taken: Around 3 hours
 
-## Setup
+Project Overview
 
-Make sure to install dependencies:
+Mini Task Management app with authentication.
+Users can log in, create tasks, toggle completion, delete tasks, and filter tasks.
 
-```bash
-# npm
-npm install
+Features
 
-# pnpm
-pnpm install
+JWT-based login
 
-# yarn
-yarn install
+Persist authentication
 
-# bun
-bun install
-```
+Fetch, create, update, delete tasks
 
-## Development Server
+Filter tasks: all / completed / pending
 
-Start the development server on `http://localhost:3000`:
+Frontend: Nuxt 4, TypeScript, Pinia
 
-```bash
-# npm
-npm run dev
+Backend: Laravel, REST API, JWT
 
-# pnpm
-pnpm dev
+Tech Stack
 
-# yarn
-yarn dev
+Frontend: Nuxt 4, Composition API, TypeScript, Pinia
+Backend: Laravel 12, JWT Auth
+Database: MySQL 
 
-# bun
-bun run dev
-```
+Setup Instructions
+Backend
 
-## Production
+Clone backend repository
 
-Build the application for production:
+Install dependencies: composer install
 
-```bash
-# npm
-npm run build
+Copy .env.example → .env and configure DB
 
-# pnpm
-pnpm build
+Generate app key: php artisan key:generate
 
-# yarn
-yarn build
+Generate JWT secret: php artisan jwt:secret
 
-# bun
-bun run build
-```
+Run migrations: php artisan migrate
 
-Locally preview production build:
+Start backend server: php artisan serve
 
-```bash
-# npm
-npm run preview
+Frontend
 
-# pnpm
-pnpm preview
+Clone frontend repository
 
-# yarn
-yarn preview
+Install dependencies: npm install
 
-# bun
-bun run preview
-```
+Start dev server: npm run dev
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Open in browser: http://localhost:3000/login
+
+Architecture
+
+Stores: auth and task Pinia stores manage state and API calls
+
+Composables: useApi handles API requests with token and error handling
+
+Middleware: Auth middleware protects task pages
+
+Components: Login.vue, Tasks.vue
